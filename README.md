@@ -3,6 +3,18 @@ trash-go
 
 The trash-go is the library for golang to move specified files to trashbox (recycle-bin) of Microsoft Windows.
 
+```go doc |
+package trash // import "github.com/hymkor/trash-go"
+
+func Throw(filenames ...string) error
+```
+
+Caution in NON-Windows environments
+-----------------------------------
+
+`Throw` deletes specified files as same as `os.Remove`.
+Files given to `Trash` cannot be revived from the trashbox on your desktop.
+
 Sample
 ------
 
