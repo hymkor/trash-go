@@ -1,0 +1,4 @@
+github.com/nyaosorg/go-importconst v0.3.0 h1:OGUNgiY2XCZqSxN9aXcl1ri5TSh7GYe50ntYgm3w0og=
+github.com/nyaosorg/go-importconst v0.3.0/go.mod h1:jNC1jjgCTuU44oZBwPm9lHYi7xvtwbzP/I4GSKz/lRw=
+golang.org/x/sys v0.14.0 h1:Vz7Qs629MkJkGyHxUlRHizWJRG2j8fbQKjELVSNhy7Q=
+golang.org/x/sys v0.14.0/go.mod h1:/VUhepiaJMQUp4+oa/7Zr1D23ma6VTLIYjOOTFZPUcA=
