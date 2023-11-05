@@ -1,4 +1,4 @@
-package trash
+package constant
 
 //go:generate go run github.com/nyaosorg/go-importconst
 //	<windows.h>

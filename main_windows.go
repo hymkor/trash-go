@@ -4,6 +4,8 @@ import (
 	"unsafe"
 
 	"golang.org/x/sys/windows"
+
+	"github.com/hymkor/trash-go/internal/constant"
 )
 
 var shell32Dll = windows.NewLazySystemDLL("Shell32.dll")
@@ -35,9 +37,9 @@ func throw(filenames ...string) error {
 	title := []uint16{0, 0}
 
 	param := &_ShFileOpStruct{
-		wFunc:             FO_DELETE,
+		wFunc:             constant.FO_DELETE,
 		pFrom:             uintptr(unsafe.Pointer(&pFromData[0])),
-		fileOpFlags:       (FOF_ALLOWUNDO | FOF_NOCONFIRMATION),
+		fileOpFlags:       (constant.FOF_ALLOWUNDO | constant.FOF_NOCONFIRMATION),
 		lpszProgressTitle: uintptr(unsafe.Pointer(&title[0])),
 	}
 
