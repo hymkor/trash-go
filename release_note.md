@@ -1,3 +1,7 @@
+- On not-MSWindows, support "the home trash" of [the FreeDesktop.org Trash 1.0][freedesktop]
+
+[freedesktop]: https://specifications.freedesktop.org/trash-spec/trashspec-1.0.html
+
 v0.1.0
 ======
 Nov 06 2023
