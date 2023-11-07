@@ -118,7 +118,7 @@ func (T *TrashCan) Throw(filename string) error {
 			file.Close()
 
 			newName := filepath.Join(filesDir, uniqName)
-			if err := os.Rename(filename, newName); err != nil {
+			if err := move(filename, newName); err != nil {
 				os.Remove(infoPath)
 				return err
 			}
