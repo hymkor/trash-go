@@ -3,12 +3,16 @@
 package trash
 
 import (
-	"os"
+	"github.com/hymkor/trash-go/internal/freedesktop"
 )
 
 func throw(filenames ...string) error {
+	homeTrash, err := freedesktop.HomeTrash(true)
+	if err != nil {
+		return err
+	}
 	for _, fn := range filenames {
-		if err := os.Remove(fn); err != nil {
+		if err := homeTrash.Throw(fn); err != nil {
 			return err
 		}
 	}
