@@ -51,3 +51,9 @@ func main() {
     }
 }
 ```
+
+See also
+--------
+
+- [hymkor/trash-rs: Move file(s) to trash-box of Microsoft Windows](https://github.com/hymkor/trash-rs)  
+    The Rust version executable that is installed by `scoop install trash` on [hymkor/bucket](https://github.com/hymkor/scoop-bucket)
