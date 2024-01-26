@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "description": "The trash-go is the library for golang to move specified files to trashbox",
+    "homepage": "https://github.com/hymkor/trash-go",
+    "license": "MIT License",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/hymkor/trash-go/releases/download/v0.2.0/trash-v0.2.0-windows-386.zip",
+            "hash": "c30852f1cd284acc85683f6afd4d31e73d09ea4cdf15a4972a86e2068cea75d8"
+        },
+        "64bit": {
+            "url": "https://github.com/hymkor/trash-go/releases/download/v0.2.0/trash-v0.2.0-windows-amd64.zip",
+            "hash": "709ed1d3d3f0976ab9b531767d7cb3d2f1ed4e23e39073b0c6037d8ca27b61d9"
+        }
+    },
+    "bin": [
+        "trash.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/hymkor/trash-go/releases/download/v$version/trash-v$version-windows-386.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/hymkor/trash-go/releases/download/v$version/trash-v$version-windows-amd64.zip"
+            }
+        }
+    }
+}
