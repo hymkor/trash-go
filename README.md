@@ -1,7 +1,7 @@
 trash-go
 ========
 
-The trash-go is the library for golang to move specified files to trashbox (recycle-bin/trash-can) of Microsoft Windows.
+`trash-go` is a Go library for moving specified files to the trash (Recycle Bin/Trash Can) on Microsoft Windows.
 
 ```go doc |
 package trash // import "github.com/hymkor/trash-go"
@@ -9,8 +9,8 @@ package trash // import "github.com/hymkor/trash-go"
 func Throw(filenames ...string) error
 ```
 
-in NON-Windows environments (experimental)
-------------------------------------------
+Non-Windows environments (experimental)
+---------------------------------------
 
 `trash.Throw` moves files to "the home trash" of [the FreeDesktop.org Trash specification 1.0][fd1].
 
@@ -58,4 +58,4 @@ See also
 --------
 
 - [hymkor/trash-rs: Move file(s) to trash-box of Microsoft Windows](https://github.com/hymkor/trash-rs)  
-    The Rust version executable that is installed by `scoop install trash` on [hymkor/bucket](https://github.com/hymkor/scoop-bucket)
+    A Rust implementation that can be installed via scoop install trash from [hymkor/bucket](https://github.com/hymkor/scoop-bucket)
