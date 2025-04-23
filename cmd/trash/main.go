@@ -43,6 +43,8 @@ func mains(args []string) error {
 	for _, arg := range args {
 		if matches, err := filepath.Glob(arg); err != nil {
 			filenames = append(filenames, arg)
+		} else if len(matches) == 0 {
+			return fmt.Errorf("%s: %w", arg, os.ErrNotExist)
 		} else {
 			filenames = append(filenames, matches...)
 		}
