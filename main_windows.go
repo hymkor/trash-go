@@ -1,6 +1,7 @@
 package trash
 
 import (
+	"errors"
 	"unsafe"
 
 	"golang.org/x/sys/windows"
@@ -43,6 +44,9 @@ func throw(filenames ...string) error {
 		lpszProgressTitle: uintptr(unsafe.Pointer(&title[0])),
 	}
 
-	shFileOperationWProc.Call(uintptr(unsafe.Pointer(param)))
-	return nil
+	_, _, err := shFileOperationWProc.Call(uintptr(unsafe.Pointer(param)))
+	if errors.Is(err, windows.ERROR_SUCCESS) {
+		return nil
+	}
+	return err
 }
