@@ -17,7 +17,16 @@ func removeFromFile(r io.Reader) error {
 	sc := bufio.NewScanner(r)
 	list := make([]string, 0, 16)
 	for sc.Scan() {
-		list = append(list, sc.Text())
+		fn := sc.Text()
+		if _, err := os.Stat(fn); err != nil {
+			if os.IsNotExist(err) {
+				// Rewrite the error to hide low-level API names
+				// (e.g., "CreateFile") that might confuse users
+				return fmt.Errorf("%s: %w", fn, os.ErrNotExist)
+			}
+			return err
+		}
+		list = append(list, fn)
 	}
 	err := sc.Err()
 	if err != nil {
