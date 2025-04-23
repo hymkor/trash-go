@@ -16,12 +16,12 @@ in NON-Windows environments (experimental)
 
 [fd1]: https://specifications.freedesktop.org/trash-spec/trashspec-1.0.html
 
-Sample
-------
+Example
+-------
 
-[cmd/trash/main.go](cmd/trash/main.go)
+[./example.go](./example.go)
 
-```cmd/trash/main.go
+```example.go
 package main
 
 import (
@@ -32,22 +32,24 @@ import (
     "github.com/hymkor/trash-go"
 )
 
+func mains(args []string) error {
+    filenames := make([]string, 0, len(args))
+    for _, arg := range args {
+        if matches, err := filepath.Glob(arg); err != nil {
+            filenames = append(filenames, arg)
+        } else if len(matches) < 1 {
+            return fmt.Errorf("%s: %w", arg, os.ErrNotExist)
+        } else {
+            filenames = append(filenames, matches...)
+        }
+    }
+    return trash.Throw(filenames...)
+}
+
 func main() {
-    args := os.Args[1:]
-    if len(args) > 0 {
-        filenames := make([]string, 0, len(args))
-        for _, arg := range args {
-            if matches, err := filepath.Glob(arg); err != nil {
-                filenames = append(filenames, arg)
-            } else {
-                filenames = append(filenames, matches...)
-            }
-        }
-        err := trash.Throw(filenames...)
-        if err != nil {
-            fmt.Fprintln(os.Stderr, err.Error())
-            os.Exit(1)
-        }
+    if err := mains(os.Args[1:]); err != nil {
+        fmt.Fprintln(os.Stderr, err.Error())
+        os.Exit(1)
     }
 }
 ```
