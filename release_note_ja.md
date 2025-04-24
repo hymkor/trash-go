@@ -1,5 +1,5 @@
 - 存在しないファイルを指定した時、エラーにならないという CLI の不具合を修正
-- 指定したファイルから削除すべきファイル名を読むオプション `-from-file FILENAME` を追加
+- 指定したファイルから削除すべきファイル名を読むオプション `-from-file FILENAME` を追加 (標準入力の場合は `-` を使う)
 - Windows API:`shFileOperationW` の結果もチェックし、`windows.ERROR_SUCCESS` を非エラーと扱うようにした。
 
 v0.2.0

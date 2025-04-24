@@ -1,5 +1,5 @@
 - Fixed a bug in the CLI where specifying a non-existent file did not result in an error.
-- Added the `-from-file FILENAME` option to read filenames to remove from the specified file.
+- Added the `-from-file FILENAME` option to read filenames to remove from the specified file (use `-` to read from standard input).
 - Properly check the result of `shFileOperationW`, treating `windows.ERROR_SUCCESS` as non-error.
 
 v0.2.0
