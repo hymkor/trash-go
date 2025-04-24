@@ -17,6 +17,7 @@ EXE:=$(shell go env GOEXE)
 all:
 	go fmt ./...
 	$(SET) "CGO_ENABLED=0" && go build $(GOOPT)
+	$(SET) "CGO_ENABLED=0" && go build -C "cmd/$(NAME)" $(GOOPT)
 
 test:
 	go test -v
