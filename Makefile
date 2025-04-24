@@ -3,13 +3,10 @@ ifeq ($(OS),Windows_NT)
     SET=set
     DEL=del
     NUL=nul
-    GITDIR=$(or $(GIT_INSTALL_ROOT),$(shell for %%I in (git.exe) do echo %%~dp$$PATH:I..))
-    AWK="$(GITDIR)\usr\bin\gawk.exe"
 else
     SET=export
     DEL=rm
     NUL=/dev/null
-    AWK=gawk
 endif
 
 NAME:=$(subst -go,,$(notdir $(CURDIR)))
