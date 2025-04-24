@@ -23,7 +23,7 @@ test:
 	go test -v
 
 _dist:
-	$(SET) "CGO_ENABLED=0" && go build $(GOOPT)
+	$(MAKE) all
 	zip -9j $(NAME)-$(VERSION)-$(GOOS)-$(GOARCH).zip cmd/$(NAME)/$(NAME)$(EXE)
 
 dist:
