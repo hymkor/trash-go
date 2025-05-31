@@ -1,7 +1,7 @@
 trash-go
 ========
 
-**trash-go** is a Go library for moving specified files to the trash (Recycle Bin on Windows, Trash Can on Linux desktop environments).
+**trash-go** is a Go library and command-line tool for moving specified files to the trash (Recycle Bin on Windows, Trash Can on Linux desktop environments).
 
 - ✅ **Windows**: Uses the `SHFileOperationW` API in `Shell32.dll`.
 - ⚠️ **Non-Windows** (experimental): Follows the [FreeDesktop.org Trash Specification 1.0][fd1] to move files to the user's "home trash".
@@ -11,12 +11,24 @@ trash-go
 Installation
 ------------
 
+### As a Library
+
 ```bash
 go get github.com/hymkor/trash-go
 ```
 
+### As a Command-Line Tool
+
+```bash
+go install github.com/hymkor/trash-go/cmd/trash@latest
+```
+
+This will install a `trash` executable in your `$GOBIN` directory.
+
 Usage
 -----
+
+### Library
 
 ```go
 package trash // import "github.com/hymkor/trash-go"
@@ -26,7 +38,30 @@ func Throw(filenames ...string) error
 
 `Throw` accepts one or more file paths and moves them to the trash.
 
-## Example
+### Command-Line Tool
+
+```bash
+trash [OPTIONS] FILE...
+```
+
+Moves the specified files to the trash.
+
+#### Options
+
+* `-from-file FILENAME`
+  Read a list of files (one per line) from the given file instead of command-line arguments.
+  Use `-` as the filename to read from standard input.
+
+#### Examples
+
+```bash
+trash *.log                 # Move matching files to trash
+trash -from-file list.txt   # Move files listed in list.txt
+find . -name "*.tmp" | trash -from-file -  # Use with standard input
+```
+
+Example (as library)
+--------------------
 
 See [example.go](./example.go) for a complete usage example.
 
@@ -66,8 +101,8 @@ func main() {
 Notes
 -----
 
-- On **Windows**, the move is typically instant and follows the behavior of Explorer's delete.
-- On **Linux**, the implementation creates `.Trash` or `.local/share/Trash` directories if they don't exist. See [FreeDesktop Trash Spec 1.0][fd1] for details.
+- On **Windows**, files are moved to the Recycle Bin using native shell operations.
+- On **Linux**, the implementation creates `.Trash` or `.local/share/Trash` directories if they don't exist, following the FreeDesktop specification.
 
 See also
 --------
@@ -75,6 +110,7 @@ See also
 * [hymkor/trash-rs](https://github.com/hymkor/trash-rs)
   A Rust implementation with similar functionality. Available via:
   `scoop install trash` from [hymkor/scoop-bucket](https://github.com/hymkor/scoop-bucket)
+
 Author
 ------
 
