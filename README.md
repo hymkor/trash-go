@@ -1,6 +1,8 @@
 trash-go
 ========
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/hymkor/trash-go.svg)](https://pkg.go.dev/github.com/hymkor/trash-go)
+
 **trash-go** is a Go library and command-line tool for moving specified files to the trash (Recycle Bin on Windows, Trash Can on Linux desktop environments).
 
 - ✅ **Windows**: Uses the `SHFileOperationW` API in `Shell32.dll`.
